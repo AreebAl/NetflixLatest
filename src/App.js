@@ -7,25 +7,15 @@ import Footer from './components/Footer';
 import Login from './components/Login';
 import Signup from './components/Signup';
 import { categories } from './data';
+import { flattenMovies, searchMovies } from './utils';
 
 function App() {
   const [searchResults, setSearchResults] = useState([]);
 
+  const allMovies = flattenMovies(categories);
+  
   const handleSearch = (term) => {
-    if (!term.trim()) {
-      setSearchResults([]);
-      return;
-    }
-
-    const results = [];
-    categories.forEach(category => {
-      category.movies.forEach(movie => {
-        if (movie.title.toLowerCase().includes(term.toLowerCase())) {
-          results.push(movie);
-        }
-      });
-    });
-    setSearchResults(results);
+    setSearchResults(searchMovies(allMovies, term));
   };
 
   return (
