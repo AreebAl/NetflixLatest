@@ -1,13 +1,24 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const MovieCard = ({ movie }) => {
+  const navigate = useNavigate();
   const [showTrailer, setShowTrailer] = useState(false);
+
+  const handleClick = (e) => {
+    // Don't navigate if clicking trailer button
+    if (e.target.closest('button')) return;
+    navigate(`/movie/${movie.id}`);
+  };
 
   // URL without mute param to attempt autoplay with sound
   const trailerUrl = `${movie.trailer}?autoplay=1&mute=0&enablejsapi=1&rel=0`;
 
   return (
-    <div className="group relative rounded overflow-hidden transition-transform duration-300 hover:scale-105 hover:z-10">
+    <div 
+      className="group relative rounded overflow-hidden transition-transform duration-300 hover:scale-105 hover:z-10 cursor-pointer"
+      onClick={handleClick}
+    >
       {showTrailer ? (
         <div className="relative w-full h-full pb-[56.25%]">
           <iframe

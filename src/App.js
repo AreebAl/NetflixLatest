@@ -6,6 +6,7 @@ import CategoryList from './components/CategoryList';
 import Footer from './components/Footer';
 import Login from './components/Login';
 import Signup from './components/Signup';
+import MovieDetails from './components/MovieDetails';
 import { categories } from './data';
 import { flattenMovies, searchMovies } from './utils';
 
@@ -48,6 +49,14 @@ function App() {
               <Login setIsAuthenticated={setIsAuthenticated} />} 
           />
           <Route path="/signup" element={<Signup />} />
+          <Route 
+            path="/movie/:id" 
+            element={isAuthenticated ? (
+              <MovieDetails />
+            ) : (
+              <Navigate to="/login" replace />
+            )} 
+          />
           <Route 
             path="/" 
             element={isAuthenticated ? (
