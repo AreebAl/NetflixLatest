@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import { useState } from 'react';
 import Header from './components/Header';
 import Hero from './components/Hero';
@@ -11,6 +11,7 @@ import { flattenMovies, searchMovies } from './utils';
 
 function App() {
   const [searchResults, setSearchResults] = useState([]);
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
 
   const allMovies = flattenMovies(categories);
   
@@ -21,8 +22,8 @@ function App() {
   return (
     <Router>
       <div className="bg-black text-white min-h-screen">
-        <Header onSearch={handleSearch} />
-        {searchResults.length > 0 && (
+        {isAuthenticated && <Header onSearch={handleSearch} />}
+        {isAuthenticated && searchResults.length > 0 && (
           <div className="fixed top-16 right-0 left-0 bg-black bg-opacity-90 z-40 p-4">
             <h2 className="text-white text-xl mb-4">Search Results</h2>
             <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4">
@@ -40,16 +41,26 @@ function App() {
           </div>
         )}
         <Routes>
-          <Route path="/login" element={<Login />} />
+          <Route 
+            path="/login" 
+            element={isAuthenticated ? 
+              <Navigate to="/" replace /> : 
+              <Login setIsAuthenticated={setIsAuthenticated} />} 
+          />
           <Route path="/signup" element={<Signup />} />
-          <Route path="/" element={
-            <>
-              <Hero />
-              <CategoryList categories={categories} />
-            </>
-          } />
+          <Route 
+            path="/" 
+            element={isAuthenticated ? (
+              <>
+                <Hero />
+                <CategoryList categories={categories} />
+                <Footer />
+              </>
+            ) : (
+              <Navigate to="/login" replace />
+            )} 
+          />
         </Routes>
-        <Footer />
       </div>
     </Router>
   );

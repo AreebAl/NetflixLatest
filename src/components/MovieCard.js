@@ -8,7 +8,8 @@ const MovieCard = ({ movie }) => {
       {showTrailer ? (
         <div className="relative w-full h-full">
           <iframe
-            src={`${movie.trailer}?autoplay=1`}
+            src={`${movie.trailer}?autoplay=1&mute=1`}
+            playsInline
             className="absolute top-0 left-0 w-full h-full rounded"
             frameBorder="0"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"

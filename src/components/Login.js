@@ -1,17 +1,30 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 
-const Login = () => {
+const Login = ({ setIsAuthenticated }) => {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const navigate = useNavigate();
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    // Accept any credentials and redirect
+    setIsAuthenticated(true);
+    navigate('/', { replace: true });
+  };
+
   return (
     <div className="min-h-screen bg-black text-white flex items-center justify-center">
       <div className="bg-gray-900 p-8 rounded-lg w-full max-w-md">
         <h1 className="text-3xl font-bold mb-6">Sign In</h1>
-        <form className="space-y-4">
+        <form onSubmit={handleSubmit} className="space-y-4">
           <div>
             <input
               type="email"
               placeholder="Email or phone number"
               className="w-full p-3 bg-gray-700 rounded"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
               required
             />
           </div>
@@ -20,6 +33,8 @@ const Login = () => {
               type="password"
               placeholder="Password"
               className="w-full p-3 bg-gray-700 rounded"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
               required
             />
           </div>
