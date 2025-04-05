@@ -3,12 +3,15 @@ import React, { useState } from 'react';
 const MovieCard = ({ movie }) => {
   const [showTrailer, setShowTrailer] = useState(false);
 
+  // URL without mute param to attempt autoplay with sound
+  const trailerUrl = `${movie.trailer}?autoplay=1&mute=0&enablejsapi=1&rel=0`;
+
   return (
     <div className="group relative rounded overflow-hidden transition-transform duration-300 hover:scale-105 hover:z-10">
       {showTrailer ? (
-        <div className="relative w-full h-full">
+        <div className="relative w-full h-full pb-[56.25%]">
           <iframe
-            src={`${movie.trailer}?autoplay=1&mute=0`} 
+            src={trailerUrl}
             className="absolute top-0 left-0 w-full h-full rounded"
             frameBorder="0"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
@@ -24,6 +27,8 @@ const MovieCard = ({ movie }) => {
           loading="lazy"
         />
       )}
+
+      {/* Overlay */}
       <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-4">
         <h3 className="text-white font-bold">{movie.title}</h3>
         <div className="flex items-center text-gray-300 text-sm mt-1">
@@ -31,6 +36,8 @@ const MovieCard = ({ movie }) => {
           <span className="mx-2">•</span>
           <span>{movie.genre}</span>
         </div>
+
+        {/* Buttons */}
         <div className="flex space-x-2 mt-2">
           <button 
             className="bg-white text-black rounded-full p-1 hover:bg-opacity-80"
