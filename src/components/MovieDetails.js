@@ -1,22 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { categories } from '../data';
-import { flattenMovies, getYouTubeId } from '../utils';
+import { flattenMovies } from '../utils';
 
 const MovieDetails = () => {
   const { id } = useParams();
   const allMovies = flattenMovies(categories);
   const movie = allMovies.find(m => m.id === parseInt(id));
-  const [isMobile, setIsMobile] = useState(false);
-
-  useEffect(() => {
-    const checkMobile = () => {
-      setIsMobile(window.innerWidth < 768);
-    };
-    checkMobile();
-    window.addEventListener('resize', checkMobile);
-    return () => window.removeEventListener('resize', checkMobile);
-  }, []);
+  const [isMobile] = useState(false);
 
   if (!movie) {
     return <div className="text-white text-center py-20">Movie not found</div>;
