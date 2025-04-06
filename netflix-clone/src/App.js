@@ -6,7 +6,11 @@ import CategoryList from './components/CategoryList';
 import Footer from './components/Footer';
 import Login from './components/Login';
 import Signup from './components/Signup';
-import MovieDetails from './components/MovieDetails';
+import HomePage from './pages/HomePage';
+import TVShowsPage from './pages/TVShowsPage';
+import MoviesPage from './pages/MoviesPage';
+import NewPopularPage from './pages/NewPopularPage';
+import MyListPage from './pages/MyListPage';
 import MovieService from './services/movieService';
 import { flattenMovies, searchMovies } from './utils';
 
