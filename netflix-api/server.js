@@ -5,6 +5,7 @@ const mongoose = require('mongoose');
 const moviesRouter = require('./routes/movies');
 const authRouter = require('./routes/auth');
 const dotenv=require('dotenv').config()
+const path = require('path');
 const app = express();
 
 // MongoDB connection
@@ -18,6 +19,13 @@ mongoose.connect(process.env.DB_URL, {
 // Middleware
 app.use(cors());
 app.use(bodyParser.json());
+
+
+app.use(express.static(path.join(__dirname, '../netflix-clone/build')));
+
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, '../netflix-clone/build/index.html'));
+});
 
 // Routes
 app.use('/api/movies', moviesRouter);
