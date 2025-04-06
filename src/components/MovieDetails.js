@@ -56,43 +56,18 @@ const MovieDetails = () => {
                 <span>{movie.genre}</span>
               </div>
 
-              {/* Trailer container with mobile fallback */}
+              {/* Trailer container - unified solution for all devices */}
               <div className="mb-6">
-                {isMobile ? (
-                  <div className="relative">
-                    <div 
-                      onClick={() => window.open(movie.trailer, '_blank')}
-                      className="block relative pb-[56.25%] bg-black rounded-lg overflow-hidden active:scale-95 transition-transform cursor-pointer"
-                    >
-                      <img
-                        src={`https://img.youtube.com/vi/${getYouTubeId(movie.trailer)}/hqdefault.jpg`}
-                        alt={`${movie.title} Trailer`}
-                        className="absolute top-0 left-0 w-full h-full object-cover opacity-70"
-                      />
-                      <div className="absolute inset-0 flex items-center justify-center">
-                        <div className="w-16 h-16 bg-red-600 rounded-full flex items-center justify-center">
-                          <svg className="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 20 20">
-                            <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clipRule="evenodd" />
-                          </svg>
-                        </div>
-                      </div>
-                    </div>
-                    <p className="text-gray-400 text-sm mt-2 text-center">
-                      Tap anywhere to watch trailer
-                    </p>
-                  </div>
-                ) : (
-                  <div className="relative" style={{ paddingBottom: '56.25%' }}>
-                    <iframe
-                      src={`${movie.trailer}?autoplay=0&mute=1&modestbranding=1&rel=0&playsinline=1`}
-                      className="absolute top-0 left-0 w-full h-full rounded-lg"
-                      frameBorder="0"
-                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                      allowFullScreen
-                      title={`${movie.title} Trailer`}
-                    />
-                  </div>
-                )}
+                <div className="relative" style={{ paddingBottom: '56.25%' }}>
+                  <iframe
+                    src={`${movie.trailer}?autoplay=0&mute=1&modestbranding=1&rel=0&playsinline=1`}
+                    className="absolute top-0 left-0 w-full h-full rounded-lg"
+                    frameBorder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowFullScreen
+                    title={`${movie.title} Trailer`}
+                  />
+                </div>
               </div>
 
               <div className="flex flex-col space-y-4 md:flex-row md:space-y-0 md:space-x-4">
