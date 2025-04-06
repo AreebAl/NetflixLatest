@@ -28,10 +28,10 @@ const Header = ({ onSearch, setIsAuthenticated }) => {
 
   const navItems = [
     { name: 'Home', path: '/' },
-    { name: 'TV Shows', path: '/tv' },
+    { name: 'TV Shows', path: '/tv-shows' },
     { name: 'Movies', path: '/movies' },
-    { name: 'New & Popular', path: '/latest' },
-    { name: 'My List', path: '/mylist' }
+    { name: 'New & Popular', path: '/new-popular' },
+    { name: 'My List', path: '/my-list' }
   ];
 
   return (

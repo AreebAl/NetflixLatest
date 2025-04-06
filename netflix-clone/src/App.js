@@ -6,13 +6,14 @@ import CategoryList from './components/CategoryList';
 import Footer from './components/Footer';
 import Login from './components/Login';
 import Signup from './components/Signup';
-import HomePage from './pages/HomePage';
-import TVShowsPage from './pages/TVShowsPage';
-import MoviesPage from './pages/MoviesPage';
-import NewPopularPage from './pages/NewPopularPage';
-import MyListPage from './pages/MyListPage';
+// import HomePage from './pages/HomePage';
+// import TVShowsPage from './pages/TVShowsPage';
+// import MoviesPage from './pages/MoviesPage';
+// import NewPopularPage from './pages/NewPopularPage';
+// import MyListPage from './pages/MyListPage';
 import MovieService from './services/movieService';
 import { flattenMovies, searchMovies } from './utils';
+import MovieDetails from './components/MovieDetails';
 
 function App() {
   const [searchResults, setSearchResults] = useState([]);
@@ -83,6 +84,10 @@ console.log("categories", categories)
               <Navigate to="/login" replace />
             )} 
           />
+          {/* <Route path="/tv-shows" element={isAuthenticated ? <TVShowsPage /> : <Navigate to="/login" replace />} />
+          <Route path="/movies" element={isAuthenticated ? <MoviesPage /> : <Navigate to="/login" replace />} />
+          <Route path="/new-popular" element={isAuthenticated ? <NewPopularPage /> : <Navigate to="/login" replace />} />
+          <Route path="/my-list" element={isAuthenticated ? <MyListPage /> : <Navigate to="/login" replace />} /> */}
           <Route 
             path="/" 
             element={isAuthenticated ? (
