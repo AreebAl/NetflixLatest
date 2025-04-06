@@ -22,7 +22,7 @@ const seedMovies = async () => {
           poster: 'https://image.tmdb.org/t/p/w500/8cXbitsS6dWQ5gfMTZdorpAAzEH.jpg',
           genre: 'Action',
           year: 2022,
-          trailer: 'https://www.youtube.com/embed/BmllggGO4pM'
+          trailer: 'https://www.youtube.com/watch?v=BmllggGO4pM'
         },
         {
           id: 2,
@@ -30,7 +30,7 @@ const seedMovies = async () => {
           poster: 'https://image.tmdb.org/t/p/w500/7gKI9hpEMcZUQpNgKrkDzJpbnNS.jpg',
           genre: 'Action',
           year: 2023,
-          trailer: 'https://www.youtube.com/embed/Y274jZs5s7s'
+          trailer: 'https://www.youtube.com/watch?v=Y274jZs5s7s'
         },
         {
           id: 3,
@@ -38,7 +38,7 @@ const seedMovies = async () => {
           poster: 'https://image.tmdb.org/t/p/w500/vnRthEZz16Q9VWcP5homkHxyHoy.jpg',
           genre: 'Thriller',
           year: 2023,
-          trailer: 'https://www.youtube.com/embed/8BFdFeOS3oM'
+          trailer: 'https://www.youtube.com/watch?v=8BFdFeOS3oM'
         },
         {
           id: 4,
@@ -113,7 +113,7 @@ const seedMovies = async () => {
         {
           id: 12,
           title: 'The Crown',
-          poster: 'https://image.tmdb.org/t/p/w500/gX8SYlnL9ZznfZwEH4KJUehuBFs.jpg',
+          poster: 'https://image.tmdb.org/t/p/w500/tjUEdX1Pzn1VqNlpUduEnnhhRH4.jpg',
           genre: 'Drama',
           year: 2016,
           trailer: 'https://www.youtube.com/embed/JWtnJjn6ng0'
@@ -151,7 +151,7 @@ const seedMovies = async () => {
         {
           id: 16,
           title: 'Narcos',
-          poster: 'https://image.tmdb.org/t/p/w500/7u3pxc0K1wx32IleAkLv78MKgrw.jpg',
+          poster: 'https://image.tmdb.org/t/p/w500/rTmal9fDbwh5F0waol2hq35U4ah.jpg',
           genre: 'Crime',
           year: 2015,
           trailer: 'https://www.youtube.com/embed/xl8zdCY-abw'
@@ -171,6 +171,114 @@ const seedMovies = async () => {
           genre: 'Drama',
           year: 2015,
           trailer: 'https://www.youtube.com/embed/9q4qzYrHVmI'
+        },
+        {
+          id: 19,
+          title: 'The Queen\'s Gambit',
+          poster: 'https://image.tmdb.org/t/p/w500/zU0htwkhNvBQdVSIKB9s6hgVeFK.jpg',
+          genre: 'Drama',
+          year: 2020,
+          trailer: 'https://www.youtube.com/watch?v=oZn3qSgmLqI'
+        },
+        {
+          id: 20,
+          title: 'Bridgerton',
+          poster: 'https://dnm.nflximg.net/api/v6/2DuQlx0fM4wd1nzqm5BFBi6ILa8/AAAAQfMluzH5rvPug_0I5fRTeeTtlAHZFZJO1o7ga5nfyLsYqgok64-vROnH7F7OC2CyLBUWqyEtiDtVIm4lE5QmXyQcgLlAQdd1Er-yZSkY0M2-qJhDXealAfbHXN_8SkJwfgef6cRJQcnynyr46bGov2Yf.jpg?r=3fd',
+          genre: 'Romance',
+          year: 2020,
+          trailer: 'https://www.youtube.com/embed/gpv7ayf_tyE'
+        }
+      ]
+    },
+    {
+      id: 4,
+      title: 'New Releases',
+      movies: [
+        {
+          id: 21,
+          title: 'The Night Agent',
+          poster: 'https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcSWNTNNhoCON3Vfz6-hKU_baCzaKe3MzYIuZIwwoDXaSa5X0-9T',
+          genre: 'Thriller',
+          year: 2023,
+          trailer: 'https://www.youtube.com/embed/FXflfh5jdIc?si=vW2BB0EOrq5ohYf7'
+        },
+        {
+          id: 22,
+          title: 'You',
+          poster: 'https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcRTRrpmgt-2UV_0PfO3gAPM72CC7wDc3QtMjU7I_qDCFA0S_Tqd',
+          genre: 'Thriller',
+          year: 2018,
+          trailer: 'https://www.youtube.com/embed/ga1m0wjzscU'
+        },
+        {
+          id: 23,
+          title: 'Outer Banks',
+          poster: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTcSzMK48mAb1yd-H0PP71sJ6zmo29EGFiAeobw51GaWBrnvSMd',
+          genre: 'Adventure',
+          year: 2020,
+          trailer: 'https://www.youtube.com/embed/Abje_mBb7Pc?si=HO6vwKw7F0j5Vr3d'
+        },
+        {
+          id: 24,
+          title: 'Shadow and Bone',
+          poster: 'https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcSR-Sul8aGnAiLGJbqiOhRYU7f_yMy1xIPCfvOpagCRlZchtIYr',
+          genre: 'Fantasy',
+          year: 2021,
+          trailer: 'https://www.youtube.com/watch?v=b1WHQTbJ7vE'
+        },
+        {
+          id: 25,
+          title: 'The Sandman',
+          poster: 'https://resizing.flixster.com/BcPdHRsYlUa2yZnwdWZDXU3YjKg=/ems.cHJkLWVtcy1hc3NldHMvdHZzZXJpZXMvZmFlMTZiNzUtZmU2ZC00MDgxLWJjY2UtNTk2YzdhMmM5OGE2LmpwZw==',
+          genre: 'Fantasy',
+          year: 2022,
+          trailer: 'https://www.youtube.com/embed/iZOwaeAEIw0?si=d_dnf2nIcOMaK_mm'
+        }
+      ]
+    },
+    {
+      id: 5,
+      title: 'Action & Adventure',
+      movies: [
+        {
+          id: 26,
+          title: 'The Umbrella Academy',
+          poster: 'https://image.tmdb.org/t/p/w500/scZlQQYnDVlnpxFTxaIv2g0BWnL.jpg',
+          genre: 'Action',
+          year: 2019,
+          trailer: 'https://www.youtube.com/embed/0DAmWHxeoKw'
+        },
+        {
+          id: 27,
+          title: 'The Mandalorian',
+          poster: 'https://image.tmdb.org/t/p/w500/sWgBv7LV2PRoQgkxwlibdGXKz1S.jpg',
+          genre: 'Sci-Fi',
+          year: 2019,
+          trailer: 'https://www.youtube.com/embed/eW7Twd85m2g'
+        },
+        {
+          id: 28,
+          title: 'The Last of Us',
+          poster: 'https://image.tmdb.org/t/p/w500/uKvVjHNqB5VmOrdxqAt2F7J78ED.jpg',
+          genre: 'Action',
+          year: 2023,
+          trailer: 'https://www.youtube.com/embed/uLtkt8BonwM'
+        },
+        {
+          id: 29,
+          title: 'House of the Dragon',
+          poster: 'https://image.tmdb.org/t/p/w500/1X4h40fcB4WWUmIBK0auT4zRBAV.jpg',
+          genre: 'Fantasy',
+          year: 2022,
+          trailer: 'https://www.youtube.com/embed/DotnJ7tTA34'
+        },
+        {
+          id: 30,
+          title: 'The Boys',
+          poster: 'https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcSNwLiJ1sRV1TQYB6PRCQ3lVKVaEmd3HvRvXoNEJnt9cojIjf4n',
+          genre: 'Action',
+          year: 2019,
+          trailer: 'https://www.youtube.com/embed/tcrNsIaQkb4'
         }
       ]
     }

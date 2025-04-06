@@ -85,6 +85,36 @@ import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import MovieService from '../services/movieService';
 
+const getYouTubeEmbedUrl = (url) => {
+  if (!url) return null;
+
+  try {
+    const parsedUrl = new URL(url);
+
+    // Case 1: Already in embed format
+    if (parsedUrl.pathname.startsWith('/embed/')) {
+      return url;
+    }
+
+    // Case 2: Standard watch?v=... format
+    const videoId = parsedUrl.searchParams.get('v');
+    if (videoId) {
+      return `https://www.youtube.com/embed/${videoId}`;
+    }
+
+    // Case 3: youtu.be short links
+    if (parsedUrl.hostname === 'youtu.be') {
+      return `https://www.youtube.com/embed${parsedUrl.pathname}`;
+    }
+
+    return null;
+  } catch (e) {
+    console.error('Invalid YouTube URL:', url);
+    return null;
+  }
+};
+
+
 const MovieDetails = () => {
   const { id } = useParams();
   const [movie, setMovie] = useState(null);
@@ -109,6 +139,8 @@ const MovieDetails = () => {
   if (loading) return <div className="text-white text-center py-20">Loading...</div>;
   if (error) return <div className="text-white text-center py-20">Error: {error}</div>;
   if (!movie) return <div className="text-white text-center py-20">Movie not found</div>;
+
+  const embedUrl = getYouTubeEmbedUrl(movie.trailer);
 
   return (
     <div className="relative min-h-screen bg-black text-white">
@@ -137,18 +169,23 @@ const MovieDetails = () => {
                 <span className="mx-2">•</span>
                 <span>{movie.genre}</span>
               </div>
-              <div className="mb-6">
-                <div className="relative" style={{ paddingBottom: '56.25%' }}>
-                  <iframe
-                    src={`${movie.trailer}?autoplay=0&mute=1&modestbranding=1&rel=0&playsinline=1`}
-                    className="absolute top-0 left-0 w-full h-full rounded-lg"
-                    frameBorder="0"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                    allowFullScreen
-                    title={`${movie.title} Trailer`}
-                  />
+              
+              {embedUrl ? (
+                <div className="mb-6">
+                  <div className="relative" style={{ paddingBottom: '56.25%' }}>
+                    <iframe
+                      src={`${embedUrl}?autoplay=0&mute=1&modestbranding=1&rel=0&playsinline=1`}
+                      className="absolute top-0 left-0 w-full h-full rounded-lg"
+                      frameBorder="0"
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                      allowFullScreen
+                      title={`${movie.title} Trailer`}
+                    />
+                  </div>
                 </div>
-              </div>
+              ) : (
+                <div className="mb-6 text-sm text-red-400">Trailer not available</div>
+              )}
               <div className="flex flex-col space-y-4 md:flex-row md:space-y-0 md:space-x-4">
                 <button className="bg-red-600 hover:bg-red-700 text-white px-6 py-3 rounded-md transition-colors flex-1">
                   Play Movie

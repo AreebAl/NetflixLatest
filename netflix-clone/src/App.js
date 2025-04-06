@@ -84,10 +84,6 @@ console.log("categories", categories)
               <Navigate to="/login" replace />
             )} 
           />
-          {/* <Route path="/tv-shows" element={isAuthenticated ? <TVShowsPage /> : <Navigate to="/login" replace />} />
-          <Route path="/movies" element={isAuthenticated ? <MoviesPage /> : <Navigate to="/login" replace />} />
-          <Route path="/new-popular" element={isAuthenticated ? <NewPopularPage /> : <Navigate to="/login" replace />} />
-          <Route path="/my-list" element={isAuthenticated ? <MyListPage /> : <Navigate to="/login" replace />} /> */}
           <Route 
             path="/" 
             element={isAuthenticated ? (
