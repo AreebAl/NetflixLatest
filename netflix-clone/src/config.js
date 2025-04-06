@@ -1,5 +1,7 @@
 const config = {
-  apiBaseUrl: process.env.REACT_APP_API_BASE_URL || 'http://localhost:5000/api'
+  apiBaseUrl: process.env.NODE_ENV === 'production'
+    ? 'https://your-render-backend-url.onrender.com/api'
+    : 'http://localhost:5000/api'
 };
 
 export default config;

@@ -1,0 +1,18 @@
+{
+    "name": "netflix-fullstack",
+    "version": "1.0.0",
+    "private": true,
+    "scripts": {
+      "install-all": "npm install --prefix netflix-api && npm install --prefix netflix-clone",
+      "build": "npm run build --prefix netflix-clone",
+      "start": "npm run start --prefix netflix-api",
+      "dev": "concurrently \"npm run dev --prefix netflix-api\" \"npm start --prefix netflix-clone\"",
+      "render-postbuild": "npm run build --prefix netflix-clone"
+    },
+    "dependencies": {
+      "concurrently": "^8.2.1"
+    },
+    "engines": {
+      "node": ">=16.0.0"
+    }
+  }

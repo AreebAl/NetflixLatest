@@ -1,0 +1,22 @@
+services:
+  - type: web
+    name: netflix-backend
+    runtime: node
+    buildCommand: npm install
+    startCommand: npm start
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: MONGODB_URI
+        required: true
+    plan: free
+
+  - type: web
+    name: netflix-frontend
+    runtime: node
+    buildCommand: npm install && npm run build
+    staticPublish: ./netflix-clone/build
+    envVars:
+      - key: NODE_ENV
+        value: production
+    plan: free

@@ -8,7 +8,7 @@ const authRouter = require('./routes/auth');
 const app = express();
 
 // MongoDB connection
-mongoose.connect('mongodb://localhost:27017/netflix', {
+mongoose.connect('mongodb+srv://areebali7q87:demo@cluster0.ure862q.mongodb.net/netflix', {
   useNewUrlParser: true,
   useUnifiedTopology: true
 })
