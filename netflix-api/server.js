@@ -1,12 +1,20 @@
 const express = require('express');
+const path = require('path');
 const cors = require('cors');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const moviesRouter = require('./routes/movies');
 const authRouter = require('./routes/auth');
 const dotenv=require('dotenv').config()
-const path = require('path');
 const app = express();
+
+
+console.log("dirname",__dirname)
+app.use(express.static(path.join(__dirname, '../netflix-clone/build')));
+
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, '../netflix-clone/build', 'index.html'));
+});
 
 // MongoDB connection
 mongoose.connect(process.env.DB_URL, {
@@ -21,11 +29,6 @@ app.use(cors());
 app.use(bodyParser.json());
 
 
-app.use(express.static(path.join(__dirname, '../netflix-clone/build')));
-
-app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, '../netflix-clone/build/index.html'));
-});
 
 // Routes
 app.use('/api/movies', moviesRouter);
