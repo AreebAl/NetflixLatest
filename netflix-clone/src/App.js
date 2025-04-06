@@ -12,7 +12,9 @@ import { flattenMovies, searchMovies } from './utils';
 
 function App() {
   const [searchResults, setSearchResults] = useState([]);
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [isAuthenticated, setIsAuthenticated] = useState(() => {
+    return !!localStorage.getItem('token');
+  });
 
   const [categories, setCategories] = useState([]);
   const [loading, setLoading] = useState(true);

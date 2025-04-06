@@ -74,6 +74,17 @@ const Login = ({ setIsAuthenticated }) => {
             Sign In
           </button>
         </form>
+        <div className="mt-4 text-center">
+          <p className="text-gray-400">
+            New to Netflix?{' '}
+            <button 
+              className="text-white hover:underline font-semibold"
+              onClick={() => navigate('/signup')}
+            >
+              Sign up now
+            </button>
+          </p>
+        </div>
       </div>
     </div>
   );

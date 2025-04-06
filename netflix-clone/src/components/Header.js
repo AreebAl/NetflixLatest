@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { FaSearch, FaBell, FaTimes } from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom';
 
-const Header = ({ onSearch }) => {
+const Header = ({ onSearch, setIsAuthenticated }) => {
   const navigate = useNavigate();
   const [searchActive, setSearchActive] = useState(false);
   const [searchTerm, setSearchTerm] = useState('');
@@ -80,6 +80,8 @@ const Header = ({ onSearch }) => {
                     className="block w-full text-left px-4 py-2 text-white hover:bg-gray-700"
                     onClick={() => {
                       setShowDropdown(false);
+                      localStorage.removeItem('token');
+                      setIsAuthenticated(false);
                       navigate('/login');
                     }}
                   >
