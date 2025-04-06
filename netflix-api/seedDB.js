@@ -1,9 +1,9 @@
 const mongoose = require('mongoose');
 const Category = require('./models/Movie');
 const User = require('./models/User');
-
+const dotenv=require('dotenv').config()
 // Connect to MongoDB
-mongoose.connect('mongodb://localhost:27017/netflix', {
+mongoose.connect(process.env.DB_URL, {
   useNewUrlParser: true,
   useUnifiedTopology: true
 });

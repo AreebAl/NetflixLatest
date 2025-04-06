@@ -4,11 +4,11 @@ const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const moviesRouter = require('./routes/movies');
 const authRouter = require('./routes/auth');
-
+const dotenv=require('dotenv').config()
 const app = express();
 
 // MongoDB connection
-mongoose.connect('mongodb+srv://areebali7q87:demo@cluster0.ure862q.mongodb.net/netflix', {
+mongoose.connect(process.env.DB_URL, {
   useNewUrlParser: true,
   useUnifiedTopology: true
 })
