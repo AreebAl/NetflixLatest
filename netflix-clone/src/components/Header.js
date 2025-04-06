@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
-import { FaSearch, FaBell, FaTimes } from 'react-icons/fa';
+
+import React, { useState, useEffect } from 'react';
+import { FaSearch, FaBell, FaTimes, FaBars } from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom';
 
 const Header = ({ onSearch, setIsAuthenticated }) => {
@@ -7,12 +8,31 @@ const Header = ({ onSearch, setIsAuthenticated }) => {
   const [searchActive, setSearchActive] = useState(false);
   const [searchTerm, setSearchTerm] = useState('');
   const [showDropdown, setShowDropdown] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth >= 768) {
+        setMobileMenuOpen(false);
+      }
+    };
+
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
   const handleSearch = (e) => {
     const term = e.target.value;
     setSearchTerm(term);
     onSearch(term);
   };
+
+  const navItems = [
+    { name: 'Home', path: '/' },
+    { name: 'TV Shows', path: '/tv' },
+    { name: 'Movies', path: '/movies' },
+    { name: 'New & Popular', path: '/latest' },
+    { name: 'My List', path: '/mylist' }
+  ];
 
   return (
     <header className="fixed top-0 w-full z-50 bg-gradient-to-b from-black to-transparent p-4">
@@ -23,14 +43,56 @@ const Header = ({ onSearch, setIsAuthenticated }) => {
             alt="Netflix Logo" 
             className="h-8 mr-8"
           />
+          
+          {/* Desktop Navigation */}
           <nav className="hidden md:flex space-x-6">
-            <button className="text-white hover:text-gray-300 bg-transparent border-none cursor-pointer">Home</button>
-            <button className="text-white hover:text-gray-300 bg-transparent border-none cursor-pointer">TV Shows</button>
-            <button className="text-white hover:text-gray-300 bg-transparent border-none cursor-pointer">Movies</button>
-            <button className="text-white hover:text-gray-300 bg-transparent border-none cursor-pointer">New & Popular</button>
-            <button className="text-white hover:text-gray-300 bg-transparent border-none cursor-pointer">My List</button>
+            {navItems.map((item) => (
+              <button 
+                key={item.name}
+                className="text-white hover:text-gray-300 bg-transparent border-none cursor-pointer"
+                onClick={() => navigate(item.path)}
+              >
+                {item.name}
+              </button>
+            ))}
           </nav>
+
+          {/* Mobile Menu Button */}
+          <button 
+            className="md:hidden text-white mr-4"
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+          >
+            <FaBars className="h-6 w-6" />
+          </button>
         </div>
+
+        {/* Mobile Menu Overlay */}
+        {mobileMenuOpen && (
+          <div className="fixed inset-0 bg-black bg-opacity-90 z-40 md:hidden">
+            <div className="flex justify-end p-4">
+              <button 
+                className="text-white"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                <FaTimes className="h-6 w-6" />
+              </button>
+            </div>
+            <div className="flex flex-col items-center justify-center h-full">
+              {navItems.map((item) => (
+                <button
+                  key={item.name}
+                  className="text-white text-2xl py-4 w-full text-center hover:bg-gray-800"
+                  onClick={() => {
+                    navigate(item.path);
+                    setMobileMenuOpen(false);
+                  }}
+                >
+                  {item.name}
+                </button>
+              ))}
+            </div>
+          </div>
+        )}
         <div className="flex items-center space-x-4">
           {searchActive ? (
             <div className="relative flex items-center">

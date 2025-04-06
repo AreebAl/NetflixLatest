@@ -45,7 +45,7 @@ console.log("categories", categories)
   return (
     <Router>
       <div className="bg-black text-white min-h-screen">
-        {isAuthenticated && <Header onSearch={handleSearch} />}
+        {isAuthenticated && <Header onSearch={handleSearch} setIsAuthenticated={setIsAuthenticated} />}
         {isAuthenticated && searchResults.length > 0 && (
           <div className="fixed top-16 right-0 left-0 bg-black bg-opacity-90 z-40 p-4">
             <h2 className="text-white text-xl mb-4">Search Results</h2>
