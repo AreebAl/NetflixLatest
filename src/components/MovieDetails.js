@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { useParams } from 'react-router-dom';
 import { categories } from '../data';
 import { flattenMovies } from '../utils';
@@ -7,7 +7,7 @@ const MovieDetails = () => {
   const { id } = useParams();
   const allMovies = flattenMovies(categories);
   const movie = allMovies.find(m => m.id === parseInt(id));
-  const [isMobile] = useState(false);
+  // const [isMobile] = useState(false);
 
   if (!movie) {
     return <div className="text-white text-center py-20">Movie not found</div>;
