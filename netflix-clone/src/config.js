@@ -8,7 +8,7 @@
 
 
 const config = {
-  apiBaseUrl:  'https://netflixlatest.onrender.com/api'
+  apiBaseUrl:  'http://localhost:5090/api'
 };
 
 export default config;
